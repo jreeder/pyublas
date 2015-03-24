@@ -44,6 +44,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_class.hpp>
 
+#ifndef NO_IMPORT_ARRAY
 namespace
 {
   static struct pyublas_array_importer
@@ -61,7 +62,7 @@ namespace
     }
   } _array_importer;
 }
-
+#endif
 
 
 
