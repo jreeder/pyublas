@@ -11,7 +11,7 @@
 # All configuration values have a default value; values that are commented out
 # serve to show the default value.
 
-import sys
+#import sys
 
 # If your extensions are in another directory, add it here.
 #sys.path.append('some/directory')
@@ -24,7 +24,7 @@ import sys
 #extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['.templates']
+templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -75,15 +75,34 @@ pygments_style = 'sphinx'
 # Options for HTML output
 # -----------------------
 
+try:
+    import sphinx_bootstrap_theme
+except:
+    from warnings import warn
+    warn("I would like to use the sphinx bootstrap theme, but can't find it.\n"
+            "'pip install sphinx_bootstrap_theme' to fix.")
+else:
+    # Activate the theme.
+    html_theme = 'bootstrap'
+    html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+
+    # Theme options are theme-specific and customize the look and feel of a theme
+    # further.  For a list of options available for each theme, see the
+    # documentation.
+    html_theme_options = {
+            "navbar_fixed_top": "true",
+            "navbar_site_name": "Contents",
+            }
+
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
 # given in html_static_path.
-html_style = 'default.css'
+#html_style = 'default.css'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['.static']
+html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
